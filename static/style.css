@@ -1,0 +1,14 @@
+li a {
+    color: green;
+}
+
+body {
+  background-color: #66ffb2;
+}
+
+#wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+}

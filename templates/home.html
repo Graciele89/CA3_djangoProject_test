@@ -4,15 +4,21 @@
 
 {% block content %}
 
+    {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+
     <nav class="navbar bg-light">
       <div class="container-fluid">
         <span class="navbar-brand mb-0 h1">My Exercise Planner!</span>
-          <p><a href="{% url 'logout' %}">Log Out</a></p>
+            <p><a href="{% url 'logout' %}">Log Out</a></p>
+
       </div>
     </nav>
 
     <div class="col-sm-25 offset-1 text-center py-3 px-3">
          <h2>{{ welcome_object }}</h2>
+
 
          {% if user.is_authenticated %}
              <h2>Hi {{ user.username }}!</h2>
@@ -23,7 +29,7 @@
    <div class="col-sm-4 mb-3 mb-sm-4">
     <div class="card" style="width: 25rem;">
         {% load static %}
-     <img src="{% static "images/healthy_lifestyle_yoga.jpg" %}" class="card-img-top" style="height:300px" alt="Exercise Planner">
+     <img src="{% static "images/kids_playing_ball.jpg" %}" class="card-img-top" style="height:250px" alt="Exercise IMG">
        <div class="card-body">
        <h5 class="card-title">EXERCISE PLANNER</h5>
        <p class="card-text">Lets start a new day on the right way!</p>
@@ -42,5 +48,6 @@
 {% else %}
   <p>You are not logged in</p>
   <a href="{% url 'login' %}">Log In</a>
+  <p><a href="{% url 'signup' %}">Don't have an account? Sign Up</a> </p>
 {% endif %}
 {% endblock %}

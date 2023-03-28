@@ -23,9 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q0p)z3+e^ua3=jdjx8pc3zf$0&a=(v*v)k#uod$!a+8&+w_zuz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+#When you set DEBUG = False in Django, you also need to set the ALLOWED_HOSTS setting to
+# specify which hosts are allowed to access your application. This is an important security
+# measure that helps prevent unauthorized access to your application.
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+#if i would deploy the app, it would be necessary to change the ip for the website hoster ip.
 
 
 # Application definition
@@ -120,7 +124,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS= [BASE_DIR/ "static"]
+STATICFILES_DIRS = [BASE_DIR/ "static"]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
