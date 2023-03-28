@@ -24,6 +24,7 @@ class AddPostViewExerciseTest(TestCase):
             'text_time': 'test time',
         }
 
+# testing the post and successful message
     def test_add_post_exercise(self):
         response = self.client.post(self.url, data=self.data)
 
@@ -50,6 +51,7 @@ class AddPostViewExerciseTest(TestCase):
         form = response.context['form']
         self.assertEqual(form.errors['text_exercise_type'], ['This field is required.'])
 
+#check when users have no exercise
     class SeeExercisesTest(TestCase):
         def setUp(self):
             self.user = User.objects.create_user(username='testuser', password='12345')
@@ -89,3 +91,5 @@ class AddPostViewExerciseTest(TestCase):
             redirect_url = reverse('exercise:exercises', kwargs={'pk': self.user_id})
             self.assertRedirects(response, redirect_url)
 
+
+#see more about runing tests in: https://docs.djangoproject.com/en/4.1/intro/tutorial05/
