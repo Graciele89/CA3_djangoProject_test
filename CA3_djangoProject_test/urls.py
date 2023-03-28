@@ -17,13 +17,13 @@ from django.contrib import admin
 from django.urls import include, path
 from django.views.generic.base import TemplateView
 from django.conf import settings
-from exercisePlanner import urls as exercisePlanner_urls
+from exercise import urls as exercise_urls
 from django.conf.urls.static import static
 
 
 urlpatterns = [
-    #path('', include(exercisePlanner_urls, namespace= 'exercisePlanner')),
-    path('exercisePlanner/', include('exercisePlanner.urls')),
+    path('exercise/', include('exercise.urls')),
+    #path('', include(exercise_urls, namespace='exercise')),
     path('admin/', admin.site.urls),
     path("accounts/", include("accounts.urls")),
     path("accounts/", include("django.contrib.auth.urls")),

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}New Plan {% endblock %}
+
+
+{% block content %}
+<h2> Create an Exercise Plan:</h2>
+<div class="=row">
+<br>
+  <div class="=col-sm-10 offset-sm-2 px5 ">
+
+    <form method="POST" action="{% url 'exercise:postExercise' user.id %}" enctype="multipart/form-data"> {# allows to send the files to the server#}
+
+{# Django uses the %csrf token% tag to protect itself from malicious attacks. #}
+{#        After rendering the page, it creates a token on the server and makes careful#}
+{#        cross-check this token for any incoming requests.If the requests coming in don't contain the token,#}
+{#        they are not executed. #}
+    {% csrf_token %}
+        {{ form.as_p }}
+    <div>
+        <button type="submit" class="btn btn-primary">Submit Plan</button>
+    </div>
+    </form>
+
+  </div>
+ </div>
+{% endblock %}

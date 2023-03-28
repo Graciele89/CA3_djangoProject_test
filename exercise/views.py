@@ -10,7 +10,7 @@ class HomePageView(TemplateView):
     # https://ccbv.co.uk/projects/Django/4.1/django.views.generic.base/TemplateView/
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['my_object_welcome'] = "Welcome to your Exercise Planner!"
+        context['welcome_object'] = "Welcome to a Healthier Life!"
 
         return context
 
@@ -26,9 +26,9 @@ class AddPostViewExercise(FormView):
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        new_object = PostExercise.objects.create(
+        PostExercise.objects.create(
             user_id=self.kwargs['pk'],
-            text_exercise_type=form.cleaned_data[' text_exercise_type'],
+            text_exercise_type=form.cleaned_data['text_exercise_type'],
             text_workout_plan=form.cleaned_data['text_workout_plan'],
             text_week_day=form.cleaned_data['text_week_day'],
             text_time=form.cleaned_data['text_time']
@@ -57,7 +57,7 @@ class DeleteExercisePost(DeleteView):  # delete list of exercises
         model_list = PostExercise.objects.filter(user_id=kwargs["pk"])
         model_list.delete()
 
-        return redirect('exercisePlanner:exercises', kwargs["pk"])
+        return redirect('exercise:exercises', kwargs["pk"])
 
 
 

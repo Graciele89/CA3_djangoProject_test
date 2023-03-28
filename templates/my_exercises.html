@@ -1,0 +1,44 @@
+{#this is  the html page to visualize the exercises plans created by the user#}
+{#if the user has a plann, display it, otherwise tell the user that he doesn't have any plans!#}
+{% extends "base.html" %}
+
+{% block title %} My Exercises  {% endblock %}
+
+{% block content %}
+     <h1> MY EXERCISES  :</h1>
+    <br>
+
+    <div class="card" style="width: 25rem;">
+      <div class="card-body">
+         {% if exercise_list %}
+           {% for postExercises in exercise_list %}
+                 <h4>Exercise Type: {{ postExercises.text_exercise_type }}</h4>
+                 <h4>Repetition: {{ postExercises.text_workout_plan }}</h4>
+                 <h4>{{ postExercises.text_week_day }}</h4>
+                 <H4>{{ postExercises.text_time }}</H4>
+                  <br>
+           {% endfor %}
+
+             <p class="card-text">Delete exercise plan?</p>
+
+          {# delete button: to delete all plans done by the user:  #}
+        <div>
+        <a href="{% url 'exercise:delete' user.id %}" class="btn btn-danger"> DELETE </a>
+        </div>
+
+            {% else %}
+
+              <h5><b>Hello {{ user.username }} </b></h5>
+
+             <h4>You don't have any plans!</h4>
+             <br>
+              <div>
+              <a href="{% url 'exercise:postExercise' user.id %}" role="button"  class="btn btn-primary" > Create Plan  </a>
+              </div>
+         {% endif %}
+
+     </div>
+    </div>
+
+{% endblock %}
+

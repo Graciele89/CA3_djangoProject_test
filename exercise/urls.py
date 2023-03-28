@@ -2,6 +2,8 @@ from django.urls import path
 from .views import HomePageView, AddPostViewExercise, SeeExercises, DeleteExercisePost
 from . import views
 
+app_name = 'exercise'
+
 urlpatterns = [
     path('', HomePageView.as_view(), name='index'),
     path('postExercise/<int:pk>', AddPostViewExercise.as_view(), name='postExercise'),  # url to my create request page
